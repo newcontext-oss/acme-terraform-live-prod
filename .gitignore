@@ -1,0 +1,9 @@
+.terraform
+.kitchen/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.d/
+credentials.json
+.env
+ubuntu
+ubuntu.pub
