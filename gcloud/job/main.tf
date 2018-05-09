@@ -1,5 +1,5 @@
 data "terraform_remote_state" "db" {
-  backend = "local"
+  backend = "gcs"
   config {
     bucket  = "tf-live-prod-state"
     prefix  = "gcloud/db/terraform.tfstate"
