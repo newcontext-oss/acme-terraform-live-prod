@@ -14,14 +14,20 @@ and place it in `gcloud/credentials.json`
 
 Create an ssh key by running: `ssh-keygen -f gcloud/ubuntu`
 
-Create an environment file here: `gcloud/.env`
-add this content:
+Create an environment file located at `gcloud/.env` with the following
+contents:
 
 ```sh
 export TF_VAR_engineer_cidrs="[\"$(dig +short myip.opendns.com @resolver1.opendns.com)/32\"]"
 export GOOGLE_APPLICATION_CREDENTIALS="../credentials.json"
 export GCLOUD_PROJECT="<project-id>
 export GCLOUD_REGION="us-west1"
+```
+
+The environment file must be sourced before working with Terraform:
+
+```sh
+source gcloud/.env
 ```
 
 ### state_bucket
