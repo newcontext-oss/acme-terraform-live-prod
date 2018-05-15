@@ -46,7 +46,6 @@ Creates the bucket that will hold the Terraform state.
 cd gcloud/state_bucket
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -71,7 +70,6 @@ Creates a vpc network and subnetworks to deploy servers into.
 cd gcloud/network
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -83,7 +81,6 @@ Creates a database server, which holds the data for the client.
 cd gcloud/db
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -95,7 +92,6 @@ Creates a jobs server, which inputs data into the database.
 cd gcloud/job
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -107,7 +103,6 @@ Creates an application server to present the data from the database.
 cd gcloud/app
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
