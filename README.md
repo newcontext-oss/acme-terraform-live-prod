@@ -60,7 +60,8 @@ terraform {
 }
 ```
 
-Then re-run `terraform init` accept (yes) to switching the state backend to gcs
+Re-run `terraform init` and agree to the proposition of copying the
+existing local state to the newly configured GCS backend.
 
 ### network
 
