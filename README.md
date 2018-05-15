@@ -10,10 +10,17 @@ Create a Google Cloud Platform project through the
 Create a service account for the project through the [IAM][gcp-iam]
 section of the web console.
 
-Download the credentials json file after creating the service account
-and place it in `gcloud/credentials.json`
+The service account must have the following roles:
 
-Create an ssh key by running: `ssh-keygen -f gcloud/ubuntu`
+* Compute Instances Admin (v1)
+* Compute Network Admin
+* Compute Security Admin
+* Storage Admin
+
+Download the credentials of the service account as a JSON file and
+place it in `gcloud/credentials.json`
+
+Create an SSH key by running: `ssh-keygen -f gcloud/ubuntu`
 
 Create an environment file located at `gcloud/.env` with the following
 contents:
