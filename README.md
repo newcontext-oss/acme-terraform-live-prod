@@ -7,8 +7,8 @@ Terraform Live Repository for the Production environment
 Create a Google Cloud Platform project through the
 [web console][gcp-web-console]. Make a note of the project ID.
 
-Create a service account that can access that project, use this URL:
-https://console.cloud.google.com/iam-admin/iam?project=<project id>
+Create a service account for the project through the [IAM][gcp-iam]
+section of the web console.
 
 Download the credentials json file after creating the service account
 and place it in `gcloud/credentials.json`
@@ -104,4 +104,5 @@ terraform plan
 terraform apply
 ```
 
+[gcp-iam]: https://console.cloud.google.com/iam-admin/iam
 [gcp-web-console]: https://console.cloud.google.com/
