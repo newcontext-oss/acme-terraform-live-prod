@@ -68,7 +68,7 @@ existing local state to the newly configured GCS backend.
 Creates a vpc network and subnetworks to deploy servers into.
 
 ```sh
-cd gcloud/network
+cd ../network
 terraform init
 terraform get -update
 terraform apply
@@ -79,7 +79,7 @@ terraform apply
 Creates a database server, which holds the data for the client.
 
 ```sh
-cd gcloud/db
+cd ../db
 terraform init
 terraform get -update
 terraform apply
@@ -90,7 +90,7 @@ terraform apply
 Creates a jobs server, which inputs data into the database.
 
 ```sh
-cd gcloud/job
+cd ../job
 terraform init
 terraform get -update
 terraform apply
@@ -101,7 +101,7 @@ terraform apply
 Creates an application server to present the data from the database.
 
 ```sh
-cd gcloud/app
+cd ../app
 terraform init
 terraform get -update
 terraform apply
