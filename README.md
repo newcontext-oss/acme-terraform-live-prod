@@ -4,7 +4,8 @@ Terraform Live Repository for the Production environment
 
 ## Getting Started
 
-Create a Google Compute Project from the web console.
+Create a Google Cloud Platform project through the
+[web console][gcp-web-console]. Make a note of the project ID.
 
 Create a service account that can access that project, use this URL:
 https://console.cloud.google.com/iam-admin/iam?project=<project id>
@@ -102,3 +103,5 @@ terraform get -update
 terraform plan
 terraform apply
 ```
+
+[gcp-web-console]: https://console.cloud.google.com/
