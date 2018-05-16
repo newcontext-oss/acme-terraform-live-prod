@@ -4,24 +4,38 @@ Terraform Live Repository for the Production environment
 
 ## Getting Started
 
-Create a Google Compute Project from the web console.
+Create a Google Cloud Platform project through the
+[web console][gcp-web-console]. Make a note of the project ID.
 
-Create a service account that can access that project, use this URL:
-https://console.cloud.google.com/iam-admin/iam?project=<project id>
+Create a service account for the project through the [IAM][gcp-iam]
+section of the web console.
 
-Download the credentials json file after creating the service account
-and place it in `gcloud/credentials.json`
+The service account must have the following roles:
 
-Create an ssh key by running: `ssh-keygen -f gcloud/ubuntu`
+* Compute Instances Admin (v1)
+* Compute Network Admin
+* Compute Security Admin
+* Storage Admin
 
-Create an environment file here: `gcloud/.env`
-add this content:
+Download the credentials of the service account as a JSON file and
+place it in `gcloud/credentials.json`
+
+Create an SSH key by running: `ssh-keygen -f gcloud/ubuntu`
+
+Create an environment file located at `gcloud/.env` with the following
+contents:
 
 ```sh
 export TF_VAR_engineer_cidrs="[\"$(dig +short myip.opendns.com @resolver1.opendns.com)/32\"]"
 export GOOGLE_APPLICATION_CREDENTIALS="../credentials.json"
-export GCLOUD_PROJECT="<project-id>
+export GCLOUD_PROJECT="<project-id>"
 export GCLOUD_REGION="us-west1"
+```
+
+The environment file must be sourced before working with Terraform:
+
+```sh
+source gcloud/.env
 ```
 
 ### state_bucket
@@ -32,7 +46,6 @@ Creates the bucket that will hold the Terraform state.
 cd gcloud/state_bucket
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -47,17 +60,17 @@ terraform {
 }
 ```
 
-Then re-run `terraform init` accept (yes) to switching the state backend to gcs
+Re-run `terraform init` and agree to the proposition of copying the
+existing local state to the newly configured GCS backend.
 
 ### network
 
 Creates a vpc network and subnetworks to deploy servers into.
 
 ```sh
-cd gcloud/network
+cd ../network
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -66,10 +79,9 @@ terraform apply
 Creates a database server, which holds the data for the client.
 
 ```sh
-cd gcloud/db
+cd ../db
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -78,10 +90,9 @@ terraform apply
 Creates a jobs server, which inputs data into the database.
 
 ```sh
-cd gcloud/job
+cd ../job
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
 
@@ -90,9 +101,11 @@ terraform apply
 Creates an application server to present the data from the database.
 
 ```sh
-cd gcloud/app
+cd ../app
 terraform init
 terraform get -update
-terraform plan
 terraform apply
 ```
+
+[gcp-iam]: https://console.cloud.google.com/iam-admin/iam
+[gcp-web-console]: https://console.cloud.google.com/
