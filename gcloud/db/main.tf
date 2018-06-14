@@ -6,13 +6,13 @@ data "terraform_remote_state" "network" {
   backend = "gcs"
 
   config {
-    bucket = "tf-live-prod-state"
+    bucket = "acme-terraform-live-prod"
     prefix = "gcloud/network/terraform.tfstate"
   }
 }
 
 module "db" {
-  source = "git::ssh://git@github.com/newcontext/tf_module_gcloud_db.git"
+  source = "git::https://github.com/newcontext-oss/terraform-google-acme-db.git"
 
   engineer_cidrs          = "${var.engineer_cidrs}"
   name                    = "acme-corp"

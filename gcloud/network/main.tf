@@ -3,7 +3,7 @@ provider "google" {
 }
 
 module "network" {
-  source = "git::ssh://git@github.com/newcontext/tf_module_gcloud_network.git"
+  source = "git::https://github.com/newcontext-oss/terraform-google-acme-network.git"
 
   organization_name = "acme-corp"
 }

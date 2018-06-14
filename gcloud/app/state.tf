@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "tf-live-prod-state"
+    bucket  = "acme-terraform-live-prod"
     prefix  = "gcloud/app/terraform.tfstate"
   }
 }

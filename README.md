@@ -1,4 +1,4 @@
-# tf_live_prod
+# acme-terraform-live-prod
 
 Terraform Live Repository for the Production environment
 
@@ -54,7 +54,7 @@ Change the content in the `state.tf` to a gcs backend:
 ```sh
 terraform {
   backend "gcs" {
-    bucket  = "tf-live-prod-state"
+    bucket  = "acme-terraform-live-prod"
     prefix  = "gcloud/state_bucket/terraform.tfstate"
   }
 }

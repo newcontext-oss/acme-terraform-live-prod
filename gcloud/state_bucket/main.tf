@@ -3,7 +3,7 @@ provider "google" {
 }
 
 module "state_bucket" {
-  source = "git::ssh://git@github.com/newcontext/tf_module_gcloud_bucket.git"
+  source = "git::https://github.com/newcontext-oss/terraform-google-acme-bucket.git"
 
-  bucket_name = "tf-live-prod-state"
+  bucket_name = "acme-terraform-live-prod"
 }

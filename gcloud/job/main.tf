@@ -6,7 +6,7 @@ data "terraform_remote_state" "network" {
   backend = "gcs"
 
   config {
-    bucket = "tf-live-prod-state"
+    bucket = "acme-terraform-live-prod"
     prefix = "gcloud/network/terraform.tfstate"
   }
 }
@@ -15,13 +15,13 @@ data "terraform_remote_state" "db" {
   backend = "gcs"
 
   config {
-    bucket = "tf-live-prod-state"
+    bucket = "acme-terraform-live-prod"
     prefix = "gcloud/db/terraform.tfstate"
   }
 }
 
 module "job" {
-  source = "git::ssh://git@github.com/newcontext/tf_module_gcloud_job.git"
+  source = "git::https://github.com/newcontext-oss/terraform-google-acme-job.git"
 
   db_internal_ip          = "${data.terraform_remote_state.db.internal_ip}"
   engineer_cidrs          = "${var.engineer_cidrs}"
